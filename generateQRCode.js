@@ -1,15 +1,15 @@
 const QRCode = require('qrcode');
 const fs = require('fs');
 
-const generateQRCode = async (text) => {
+
+const generateQRCodeToFile = async (text, filePath) => {
     try {
-        const qr = await QRCode.toDataURL(text);
-        console.log(qr);
+        await QRCode.toFile(filePath, text);
+        console.log(`generateQRCodeToFile ${filePath}`);
     } catch (err) {
-        console.error(err)
+        console.error(err);
     }
-};
-
-generateQRCode('https://google.com');
+}
 
 
+generateQRCodeToFile('https://google.com', './qrcode/qrcode.png');
